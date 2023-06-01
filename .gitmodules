@@ -1,0 +1,12 @@
+[submodule "resources/ldd3"]
+	path = resources/ldd3
+	url = git@github.com:martinezjavier/ldd3.git
+[submodule "resources/linux-tkg"]
+	path = resources/linux-tkg
+	url = https://github.com/Frogging-Family/linux-tkg.git
+[submodule "resources/modprobed-db"]
+	path = resources/modprobed-db
+	url = https://github.com/graysky2/modprobed-db.git
+[submodule "resources/craftinginterpreters"]
+	path = resources/craftinginterpreters
+	url = https://github.com/munificent/craftinginterpreters.git
