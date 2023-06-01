@@ -1,1 +1,6 @@
 Fedora-Server-KVM-38-1.6.x86_64.qcow2
+*.o
+*.ko
+*.obj
+*.elf
+*.idx
