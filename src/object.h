@@ -22,71 +22,72 @@
 #define AS_STRING(value) ((ObjString *)AS_OBJ(value))
 #define AS_CSTRING(value) (((ObjString *)AS_OBJ(value))->chars)
 typedef enum {
-  OBJ_CLOSURE,
-  OBJ_STRING,
-  OBJ_FUNCTION,
-  OBJ_UPVALUE,
-  OBJ_NATIVE,
-  OBJ_CLASS,
-  OBJ_BOUND_METHOD,
-  OBJ_INSTANCE
+	OBJ_CLOSURE,
+	OBJ_STRING,
+	OBJ_FUNCTION,
+	OBJ_UPVALUE,
+	OBJ_NATIVE,
+	OBJ_CLASS,
+	OBJ_BOUND_METHOD,
+	OBJ_INSTANCE
 } ObjType;
 
 struct Obj {
-  ObjType type;
-  bool isMarked;
-  struct Obj *next;
+	ObjType type;
+	bool isMarked;
+	struct Obj *next;
 };
 typedef struct {
-  Obj obj;
-  int arity;
-  int upvalueCount;
-  Chunk chunk;
-  ObjString *name;
+	Obj obj;
+	int arity;
+	int upvalueCount;
+	Chunk chunk;
+	ObjString *name;
 } ObjFunction;
 
 typedef Value (*NativeFn)(int argCount, Value *args);
 
 typedef struct {
-  Obj obj;
-  NativeFn function;
+	Obj obj;
+	NativeFn function;
 } ObjNative;
 
 struct ObjString {
-  Obj obj;
-  int length;
-  char *chars;
-  uint32_t hash;
+	Obj obj;
+	int length;
+	char *chars;
+	uint32_t hash;
 };
 typedef struct ObjUpvalue {
-  Obj obj;
-  Value *location;
-  Value closed;
-  struct ObjUpvalue *next;
+	Obj obj;
+	Value *location;
+	Value closed;
+	struct ObjUpvalue *next;
 } ObjUpvalue;
 typedef struct {
-  Obj obj;
-  ObjFunction *function;
-  ObjUpvalue **upvalues;
-  int upvalueCount;
+	Obj obj;
+	ObjFunction *function;
+	ObjUpvalue **upvalues;
+	int upvalueCount;
 } ObjClosure;
 typedef struct {
-  Obj obj;
-  ObjString *name;
-  Table methods;
+	Obj obj;
+	ObjString *name;
+	Table methods;
 } ObjClass;
 typedef struct {
-  Obj obj;
-  ObjClass *klass;
-  Table fields;
+	Obj obj;
+	ObjClass *klass;
+	Table fields;
 } ObjInstance;
 typedef struct {
-  Obj obj;
-  Value receiver;
-  ObjClosure *method;
+	Obj obj;
+	Value receiver;
+	ObjClosure *method;
 } ObjBoundMethod;
-static inline bool isObjType(Value value, ObjType type) {
-  return IS_OBJ(value) && AS_OBJ(value)->type == type;
+static inline bool isObjType(Value value, ObjType type)
+{
+	return IS_OBJ(value) && AS_OBJ(value)->type == type;
 }
 ObjString *copyString(const char *chars, int length);
 void printObject(Value value);

@@ -5,7 +5,11 @@ Fedora-Server-KVM-38-1.6.x86_64.qcow2
 *.elf
 *.idx
 *.cmd
+*.mod
+*.symvers
+*.order
 linux-6.2.16/
 resources/linux-6.2.16*
 src.tar.gz
 src/fib.lox
+src/kmain_lox.mod.c
