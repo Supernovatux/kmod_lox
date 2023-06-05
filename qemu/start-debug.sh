@@ -7,6 +7,7 @@ qemu-system-x86_64 -boot d \
       -name fedora \
       -cpu host \
       -m 4G \
+      -s -S\
       -drive file=./Fedora-Server-KVM-38-1.6.x86_64.qcow2,if=virtio,aio=native,cache.direct=on,cache=writeback \
       -object rng-random,id=rng0,filename=/dev/urandom \
       -device virtio-rng-pci,rng=rng0 \
