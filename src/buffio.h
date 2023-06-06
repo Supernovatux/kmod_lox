@@ -7,9 +7,9 @@
 #include <linux/types.h>
 #define BUFF_DEFAULT_SIZE 0x100
 typedef struct {
-	char *buffer;
-	loff_t cursor;
-	size_t size;
+  char *buffer;
+  loff_t cursor;
+  size_t size;
 } buffio;
 extern buffio *lox_input_buffer;
 extern buffio *lox_output_buffer;
