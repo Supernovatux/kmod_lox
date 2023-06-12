@@ -2,7 +2,7 @@ use std::fmt::Debug;
 
 use crate::{
     chunk::{Chunk, OpCode},
-    compiler::compile,
+    compiler::Compiler,
     value::Value,
 };
 #[derive(Debug)]
@@ -53,7 +53,9 @@ impl VM {
         }
     }
     pub fn interpret(&mut self, source: String) -> Result<(), InterpreterError> {
-        compile(source);
+        let mut codegen = Compiler::new(source, &mut self.chunk);
+        codegen.compile()?;
+        self.run()?;
         Ok(())
     }
     fn run(&mut self) -> Result<(), InterpreterError> {

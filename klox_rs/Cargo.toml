@@ -7,4 +7,6 @@ edition = "2021"
 
 [dependencies]
 rustyline = "11.0.0"
-phf = { version = "0.11", default-features = false }
+phf = { version = "0.11", default-features = false,features = ["macros"] }
+ordered-float = { version = "3.0", default-features = false }
+derivative = "2.2.0"
